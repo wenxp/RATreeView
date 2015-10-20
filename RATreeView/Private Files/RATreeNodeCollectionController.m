@@ -163,19 +163,17 @@
     [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
         RATreeNodeItem *lazyItem = [[RATreeNodeItem alloc] initWithParent:parentController.treeNode.item index:idx];
         [lazyItem setDataSource:self];
-        RATreeNodeController *controller = [[RATreeNodeController alloc] initWithParent:parentController item:lazyItem expanded:YES];
         BOOL shouldItemExpandAfterDataReload = NO;
         if([self.dataSource respondsToSelector:@selector(treeNodeCollectionController:shouldItemBeExpandedAfterDataReload:)]) {
-          shouldItemExpandAfterDataReload = [self.dataSource treeNodeCollectionController:self shouldItemBeExpandedAfterDataReload:controller.treeNode.item];
+            shouldItemExpandAfterDataReload = [self.dataSource treeNodeCollectionController:self shouldItemBeExpandedAfterDataReload:lazyItem.item];
         }
-        //
+        RATreeNodeController *controller = [[RATreeNodeController alloc] initWithParent:parentController item:lazyItem expanded:shouldItemExpandAfterDataReload];
         if(shouldItemExpandAfterDataReload) {
             NSInteger numberOfChildren = [self.dataSource treeNodeCollectionController:self numberOfChildrenForItem:controller.treeNode.item];
             NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, numberOfChildren)];
             NSArray *childControllers = [self controllersForNodesWithIndexes:indexes inParentController:controller];
             [controller insertChildControllers:childControllers atIndexes:indexes];
         }
-        //
         [newControllers addObject:controller];
     }];
     
