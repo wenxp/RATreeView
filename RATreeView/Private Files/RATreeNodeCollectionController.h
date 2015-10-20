@@ -26,6 +26,7 @@
 
 - (NSInteger)treeNodeCollectionController:(RATreeNodeCollectionController *)controller numberOfChildrenForItem:(id)item;
 - (id)treeNodeCollectionController:(RATreeNodeCollectionController *)controller child:(NSInteger)childIndex ofItem:(id)item;
+- (BOOL)treeNodeCollectionController:(RATreeNodeCollectionController *)controller shouldItemBeExpandedAfterDataReload:(id)item;
 
 @end
 

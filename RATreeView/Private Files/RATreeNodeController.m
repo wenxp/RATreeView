@@ -190,11 +190,16 @@
 
 - (NSInteger)numberOfVisibleDescendants
 {
-    NSInteger numberOfVisibleDescendants = [self.childControllers count];
-    for (RATreeNodeController *controller in self.childControllers) {
-        numberOfVisibleDescendants += controller.numberOfVisibleDescendants;
+    if(self.treeNode.expanded) {
+        NSInteger numberOfVisibleDescendants = [self.childControllers count];
+        for (RATreeNodeController *controller in self.childControllers) {
+            if(controller.treeNode.expanded) {
+              numberOfVisibleDescendants += controller.numberOfVisibleDescendants;
+            }
+        }
+        return numberOfVisibleDescendants;
     }
-    return numberOfVisibleDescendants;
+    return 0;
 }
 
 - (NSInteger)level

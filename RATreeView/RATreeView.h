@@ -98,6 +98,8 @@ typedef enum RATreeViewRowAnimation {
  */
 - (id)treeView:(RATreeView *)treeView child:(NSInteger)index ofItem:(id)item;
 
+- (BOOL)treeView:(RATreeView *)treeView shouldItemBeExpandedAfterDataReload:(id)item;
+
 @optional
 
 ///------------------------------------------------

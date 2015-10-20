@@ -192,6 +192,10 @@
   return data.children[index];
 }
 
+- (BOOL)treeView:(RATreeView *)treeView shouldItemBeExpandedAfterDataReload:(id)item {
+    return NO;
+}
+
 #pragma mark - Helpers 
 
 - (void)loadData

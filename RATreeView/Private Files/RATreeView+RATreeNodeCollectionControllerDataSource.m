@@ -32,4 +32,8 @@
   return [self.dataSource treeView:self child:childIndex ofItem:item];
 }
 
+- (BOOL)treeNodeCollectionController:(RATreeNodeCollectionController *)controller shouldItemBeExpandedAfterDataReload:(id)item {
+    return [self.dataSource treeView:self shouldItemBeExpandedAfterDataReload:item];
+}
+
 @end
