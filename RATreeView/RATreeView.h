@@ -98,8 +98,6 @@ typedef enum RATreeViewRowAnimation {
  */
 - (id)treeView:(RATreeView *)treeView child:(NSInteger)index ofItem:(id)item;
 
-- (BOOL)treeView:(RATreeView *)treeView shouldItemBeExpandedAfterDataReload:(id)item;
-
 @optional
 
 ///------------------------------------------------
@@ -208,6 +206,9 @@ typedef enum RATreeViewRowAnimation {
  *  @discussion If the delegate does not implement this method, the default is YES.
  */
 - (BOOL)treeView:(RATreeView *)treeView shouldExpandRowForItem:(id)item;
+
+- (BOOL)treeView:(RATreeView *)treeView shouldItemBeExpandedAfterDataReload:(id)item;
+
 
 /**
  *  Asks delegate whether a row for a specified item should be collapsed.
