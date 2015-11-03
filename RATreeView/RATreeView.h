@@ -124,6 +124,8 @@ typedef enum RATreeViewRowAnimation {
  */
 - (BOOL)treeView:(RATreeView *)treeView canEditRowForItem:(id)item;
 
+- (BOOL)treeView:(RATreeView *)treeView shouldItemBeExpandedAfterDataReload:(id)item;
+
 @end
 
 
@@ -207,7 +209,6 @@ typedef enum RATreeViewRowAnimation {
  */
 - (BOOL)treeView:(RATreeView *)treeView shouldExpandRowForItem:(id)item;
 
-- (BOOL)treeView:(RATreeView *)treeView shouldItemBeExpandedAfterDataReload:(id)item;
 
 
 /**
